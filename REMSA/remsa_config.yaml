@@ -1,0 +1,30 @@
+# === OpenAI ===
+OPENAI_API_KEY: "" # set in .env
+OPENAI_MODEL_NAME: "gpt-4.1-mini"
+
+# === Foundation Model Database ===
+FMD_JSONL_PATH: "../model_metadata/fmd.jsonl"
+DUCKDB_PATH: "../model_metadata/model_metadata.duckdb"
+EMBEDDING_MODEL_NAME: "all-MiniLM-L6-v2"
+VECTOR_INDEX_PATH: "../indices_data/fmd_index"
+
+# === Learning-to-Rank (L2R) Model ===
+L2R_MODEL_PATH: "models/cross_encoder.pt"
+
+# === Clarification Settings ===
+MAX_CLARIFY: 2
+TOP_K: 4 #5
+CONFIDENCE_THRESHOLD: 0.6
+CLARIFY_TEMPERATURE: 0
+
+# === Retrieval & Memory ===
+MAX_RETRIEVE: 4  # number of raw candidates to consider
+MIN_SIMILARITY: 0.4  # cosine similarity threshold
+SIMILARITY_BOUNDARY: 0.1
+MEMORY_PATH: "data/memory.faiss"
+
+# === Adaptation Rules ===
+RULES_PATH: "rules.yaml"
+
+# === Benchmark Execution ===
+BENCHMARK_EXECUTOR: "local"  # "local" or "slurm"

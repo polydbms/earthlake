@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f7f7f7;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 10px;
+  align-items: center;
+  padding-bottom: 12vh;
+}
+
+.panel {
+  width: 100%;
+  max-width: 1140px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}

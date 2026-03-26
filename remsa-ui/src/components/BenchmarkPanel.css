@@ -1,0 +1,584 @@
+/* =========================================================
+   1. BENCHMARK PANEL LAYOUT & HEADER
+   ========================================================= */
+.panel-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #213547;
+}
+
+.benchmark-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.benchmark-header .panel-title { margin: 0; }
+
+.benchmark-tabs {
+  display: flex;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tab {
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  background: white;
+  color: #555;
+  cursor: pointer;
+}
+.tab + .tab { border-left: 1.5px solid #d0d0d0; }
+.tab.active { background: #213547; color: white; }
+.tab:hover:not(.active) { background: #f5f5f5; }
+
+.benchmark-layout-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* =========================================================
+   2. TOP PANEL: CONFIGURATION
+   ========================================================= */
+.top-config {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.config-left,
+.config-right {
+  background: #fafafa;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  box-sizing: border-box; /* <--- THIS PREVENTS OVERFLOW */
+  padding: 9px 12px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #213547;
+  background: white;
+  outline: none;
+}
+.form-group select:focus,
+.form-group input:focus {
+  border-color: #4a76d1;
+}
+
+.charts-and-compare {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.charts-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.charts-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* bar charts */
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 50px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.bar-track {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #4a76d1;
+}
+
+.bar-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-value {
+  text-align: right;
+  font-weight: 600;
+}
+
+.charts-and-compare {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.charts-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.charts-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.advanced-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.advanced-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mode-toggle {
+  display: flex;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mode-toggle button {
+  flex: 1;
+  padding: 9px 0;
+  border: none;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #555;
+}
+
+.mode-toggle button + button {
+  border-left: 1.5px solid #d0d0d0;
+}
+
+.mode-toggle button.active {
+  background: #213547;
+  color: white;
+}
+
+.mode-toggle button:hover:not(.active) {
+  background: #f5f5f5;
+}
+
+.gpu-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.gpu-check.warning {
+  background: #fce4ec;
+  color: #c62828;
+}
+.gpu-check.loading {
+  background: #f0f0f0;
+  color: #888;
+}
+
+.run-btn {
+  width: 100%;
+  padding: 12px;
+  background: #213547;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+}
+.run-btn:hover { background: #2c4a63; }
+.run-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* =========================================================
+   3. BOTTOM PANEL: JOB MONITOR (TABLE)
+   ========================================================= */
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.job-table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #999;
+  border-bottom: 1.5px solid #e8e8e8;
+}
+.job-table td {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #213547;
+}
+.job-table tr.selected td { background: #f5f8ff; }
+.job-table tr:hover td { background: #fafafa; cursor: pointer; }
+.job-table tr.selected:hover td { background: #f5f8ff; }
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.status-badge.pending   { background: #f0f0f0; color: #888; }
+.status-badge.running   { background: #e3f2fd; color: #1565c0; }
+.status-badge.completed { background: #e8f5e9; color: #2e7d32; }
+.status-badge.failed    { background: #fce4ec; color: #c62828; }
+.status-badge.queued {
+  background: #fff8e1;
+  color: #ff8f00;
+}
+.status-badge.cancelled {
+  background: #f5f5f5;
+  color: #777;
+}
+/* =========================================================
+   4. MULTI-MODEL CHARTS LAYOUT & GRAPHS
+   ========================================================= */
+.all-charts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Reduced from 32px */
+  margin-top: 16px;
+}
+
+.model-chart-row {
+  background: #fafafa;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 16px; /* Tighter outer padding */
+}
+
+.model-chart-title {
+  margin: 0 0 12px 0; /* Tighter bottom margin */
+  font-size: 15px;
+  font-weight: 600;
+  color: #213547;
+}
+
+.model-chart-subtitle {
+  font-weight: 400;
+  color: #888;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+/* Force 3 columns, prevent overflow */
+.metrics-plot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px; /* Tighter gap between cards */
+  width: 100%;
+}
+
+.refresh-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background: #f1f5f9; /* Subtle light background */
+  border: 1px solid #e2e8f0;
+  border-radius: 6px; /* Matches your dropdowns/inputs */
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.refresh-btn:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  color: #213547;
+}
+
+.refresh-btn:active {
+  background: #cbd5e1;
+  transform: translateY(1px); /* Muted click feedback */
+}
+
+/* Responsive graph cards */
+.plot-card {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 10px 12px; /* Compressed card padding */
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Compressed space between title and SVG */
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  min-width: 0;
+}
+
+/* Constrained SVG height */
+.line-chart {
+  width: 100%;
+  height: auto;
+  max-height: 110px; /* Slightly shorter to save vertical space */
+  display: block;
+  overflow: visible;
+}
+
+.plot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.plot-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.plot-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #213547;
+}
+
+.compare-chart-card {
+  background: #fafafa;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+/* Graph Legends */
+.plot-legend {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px; /* Tighter legend rows */
+}
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+
+.legend-label {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 600;
+}
+
+/* =========================================================
+   ROW ACTION BUTTONS (DEPLOY / FINE-TUNE)
+   ========================================================= */
+.action-cell {
+  white-space: nowrap; /* Prevents buttons from stacking vertically */
+}
+
+.action-mini-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 550;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  margin-right: 6px; /* Replaces the flex 'gap' */
+  vertical-align: middle;
+}
+
+/* Icon Button specific styles */
+.action-mini-btn.icon-btn {
+  padding: 6px 8px; /* Tighter padding to make it square-ish */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.action-mini-btn.icon-btn svg {
+  display: block; /* Removes weird baseline spacing below SVGs */
+}
+
+/* Make sure the hover states still apply to the SVG stroke */
+.action-mini-btn.secondary.cancel-btn:hover svg,
+.action-mini-btn.secondary.delete-btn:hover svg {
+  stroke: #dc2626; /* Red icon on hover */
+}
+
+/* Remove margin from the last button so it doesn't push the table edge */
+.action-mini-btn:last-child {
+  margin-right: 0;
+}
+
+.action-mini-btn.primary {
+  background: #213547;
+  color: white;
+}
+
+.action-mini-btn.primary:hover {
+  background: #2c4a63;
+}
+
+/* =========================================================
+   DATASET METADATA TAGS
+   ========================================================= */
+.dataset-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.01);
+}
+
+.dataset-tag {
+  background: #f5f8ff;
+  color: #4a76d1;
+  border: 1px solid #d1dfff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.action-mini-btn.secondary {
+  background: white;
+  color: #213547;
+  border: 1px solid #d0d0d0;
+}
+
+.action-mini-btn.secondary:hover {
+  background: #f5f5f5;
+  border-color: #aaa;
+}
+
+.mode-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mode-badge.linear_probe {
+  background: rgba(204, 25, 243, 0.19);
+  color: #610197;
+}
+
+.mode-badge.fine_tune {
+  background: rgba(255, 243, 224, 0.84);
+  color: #ef6c00;
+}
+
+.error-box {
+  margin-top: 12px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.error-text {
+  margin-top: 6px;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Collapse to single column on small screens with ZERO wasted space */
+@media (max-width: 1100px) {
+  .metrics-plot-grid {
+    grid-template-columns: 1fr;
+    gap: 8px; /* Ultra-tight gap when stacked vertically */
+  }
+}

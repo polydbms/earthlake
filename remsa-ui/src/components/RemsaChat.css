@@ -1,0 +1,186 @@
+.chat-ui {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-window {
+  border: 0px;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 480px;
+  overflow-y: auto;
+  margin-bottom: 0.75rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.explore-btn.active {
+  background: #213547;
+  color: white;
+  border-color: #213547;
+}
+
+.benchmark-btn.active {
+  background: #213547;
+  color: white;
+  border-color: #213547;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  text-align: center;
+  color: #777;
+  padding: 1rem;
+}
+
+.empty-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #213547;
+}
+
+.example-queries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.example {
+  font-size: 1.1rem;
+  color: #555;
+  opacity: 0.85;
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+}
+
+.msg.user {
+  align-items: flex-end;
+}
+
+.msg.agent {
+  align-items: flex-start;
+}
+
+.user-bubble {
+  background: #213547;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 16px 16px 2px 16px;
+  max-width: 80%;
+  white-space: pre-line;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  font-size: 0.95rem;
+}
+
+.agent-message {
+  max-width: 95%;
+  color: #213547;
+  white-space: normal;
+  padding: 0;
+  margin: 0;
+  background: none; 
+  border-radius: 0;
+  font-size: 0.95rem;
+}
+
+.agent-message h3 {
+  padding: auto;
+  margin: 20px 0 2px 0;
+}
+
+.agent-message ul {
+  margin: 0.2rem 0 0.2rem 1rem;
+  padding: 0;
+}
+
+.agent-message li {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.agent-message p {
+  margin: 0;
+  
+}
+
+.agent-message a {
+  padding: auto;
+  color: #444;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.chat-textarea {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 0px;
+  background-color: #f7f7f7;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  resize: none;
+  min-height: 2.6rem;
+  max-height: 160px;
+}
+
+.model-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.explore-btn {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.explore-btn:hover {
+  background: #f7f7f7;
+}
+
+.benchmark-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.benchmark-btn {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #444;
+  text-decoration: none;
+}
+
+.benchmark-btn:hover {
+  background: #f7f7f7;
+}

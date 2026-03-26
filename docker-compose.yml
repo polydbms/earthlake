@@ -1,0 +1,150 @@
+services:
+  file_metadata_extractor:
+    build: ./file_metadata_extractor
+    env_file:
+      - .env
+    volumes:
+      - ./papers:/papers
+      - ./file_metadata_extractor/FoundationModels.yaml:/FoundationModels.yaml
+      - ./model_metadata_predictions:/model_metadata_predictions
+#    command: [
+#      "python", "src/run.py",
+#      "--config", "/FoundationModels.yaml",
+#      "--file_path", "/papers/2401.16822v3.pdf"
+#    ]
+    environment:
+      CONFIG_PATH: "/FoundationModels.yaml"
+    ports:
+      - "8100:8100"
+    command: [
+      "uvicorn", "src.api:app",
+      "--host", "0.0.0.0",
+      "--port", "8100"
+    ]
+
+
+  remsa:
+    build: ./REMSA
+    env_file:
+      - .env
+    volumes:
+      - ./indices_data:/indices_data
+      - ./model_metadata/model_metadata.duckdb:/model_metadata/model_metadata.duckdb
+      - ./REMSA/remsa_config.yaml:/app/REMSA/remsa_config.yaml
+      - ./model_weights:/model_weights
+    environment:
+      - HF_HOME=/model_weights/huggingface
+      - TORCH_HOME=/model_weights/torch
+      - MODEL_WEIGHTS_DIR=/model_weights
+      - SATMAE_REPO_PATH=/model_weights/satmae/repo
+      - SATMAE_CKPT_DIR=/model_weights/satmae/checkpoints
+    #command: [
+    #"python", "-m", "REMSA.main"
+    #]
+    ports:
+      - "8000:8000"
+    command: [
+      "uvicorn", "REMSA.api:app",
+      "--host", "0.0.0.0",
+      "--port", "8000"
+    ]
+
+  faiss_builder:
+    build: ./faiss_builder
+    volumes:
+      - ./model_metadata/model_metadata.duckdb:/model_metadata/model_metadata.duckdb
+      - ./faiss_builder/config.yaml:/config.yaml
+      - ./faiss_builder/outputs:/outputs
+    #command: ["python", "build_vectorstore.py"]
+    #command: ["tail", "-f", "/dev/null"]
+    ports:
+      - "8200:8200"
+    command: [
+      "uvicorn", "api:app",
+      "--host", "0.0.0.0",
+      "--port", "8200"
+    ]
+
+  remsa-ui:
+    build: ./remsa-ui
+    ports:
+      - "5173:5173"
+    command: ["npm", "run", "dev", "--", "--host"]
+
+  query_service:
+    build: ./fmd_query_service
+    ports:
+      - "8150:8150"
+    volumes:
+      - ./model_metadata/model_metadata.duckdb:/model_metadata/model_metadata.duckdb:ro
+    command: [
+      "uvicorn", "api:app",
+      "--host", "0.0.0.0",
+      "--port", "8150"
+    ]
+
+  benchmark-gpu:
+    profiles: ["gpu"]
+    build:
+      context: ./REMSA
+      dockerfile: Dockerfile.benchmark.cuda
+    ports:
+      - "8300:8300"
+    volumes:
+      - benchmark_results:/app/benchmark_results
+      - ./model_weights:/model_weights
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_HOME=/model_weights/huggingface
+      - TORCH_HOME=/model_weights/torch
+      - MODEL_WEIGHTS_DIR=/model_weights
+      - SATMAE_REPO_PATH=/model_weights/satmae/repo
+      - SATMAE_CKPT_DIR=/model_weights/satmae/checkpoints
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: [
+      "uvicorn", "REMSA.benchmark_main:app",
+      "--host", "0.0.0.0",
+      "--port", "8300"
+    ]
+
+  benchmark-cpu:
+    profiles: ["cpu"]
+    build:
+      context: ./REMSA
+      dockerfile: Dockerfile.benchmark.cpu
+    ports:
+      - "8300:8300"
+    volumes:
+      - ./benchmark_results:/app/benchmark_results
+      - ./model_metadata:/model_metadata
+      - ./model_weights:/model_weights
+      - ./datasets:/datasets
+    shm_size: "8gb"
+    command: [
+      "bash", "-c",
+      "bash /app/REMSA/datasets/sen1floods11.sh && uvicorn REMSA.benchmark_main:app --host 0.0.0.0 --port 8300"
+    ]
+
+  inference:
+    build:
+      context: ./inference_service
+      dockerfile: Dockerfile
+    ports:
+      - "8350:8350"
+    volumes:
+      - ./benchmark_results:/app/benchmark_results
+      - ./model_weights:/model_weights
+    command: [
+      "uvicorn", "inference_api:app",
+      "--host", "0.0.0.0",
+      "--port", "8350"
+    ]
+
+volumes:
+  benchmark_results:

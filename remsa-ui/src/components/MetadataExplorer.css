@@ -1,0 +1,154 @@
+.metadata-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.metadata-container h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.view-toggle {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.view-toggle input {
+  margin-right: 6px;
+}
+
+.sql-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 6px;
+  border: 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  background-color: #f7f7f7;
+  margin-bottom: 8px;
+  min-height: 2.6rem;
+  max-height: 20rem;
+  resize: none;
+  overflow: hidden;
+}
+
+.run-button {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.result-container {
+  margin-top: 20px;
+  max-height: 600px;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: #ffffff;
+  overflow-x: auto;
+}
+
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  table-layout: fixed;
+}
+
+.meta-row {
+  border-bottom: 1px solid #eee;
+}
+
+.meta-key-cell {
+  font-weight: bold;
+  width: 190px;
+  padding: 8px;
+  background: #fafafa;
+  vertical-align: top;
+}
+
+.meta-value-cell {
+  position: relative;
+}
+
+.multi-col-table th,
+.multi-col-table td {
+  border-bottom: 1px solid #eee;
+  padding: 6px;
+  vertical-align: top;
+}
+
+.meta-col-header {
+  font-weight: bold;
+  background: #fafafa;
+  width: 260px;
+}
+
+
+.json-pretty-container {
+  max-height: 800px;
+  overflow: auto;
+  font-size: 0.85rem;
+}
+
+.json-error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.raw-result {
+  white-space: pre-wrap;
+  font-size: 0.85rem;
+}
+
+.no-results {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.json-plain {
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.json-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.json-textarea {
+  width: 95%;
+  resize: none;
+  min-height: 6.2rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.json-textarea.expanded {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 210%;
+  max-width: none;
+  height: 360px;
+  max-height: 360px;
+
+  overflow: auto;
+  cursor: text;
+
+  background: #fff;
+  border: 1px solid #ddd;
+  z-index: 10;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}

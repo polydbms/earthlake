@@ -1,0 +1,48 @@
+.app-header {
+  width: 100%;
+  background: white;
+  padding: 16px 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, auto) 1fr;  
+  align-items: center;
+  box-sizing: border-box; 
+  overflow-x: hidden;
+}
+
+.header-left {
+justify-self: start;
+}
+
+.nav-links {
+justify-self: center;
+display: flex;
+gap: 30px;
+}
+
+.header-right {
+justify-self: end;
+}
+
+.header-left h1 {
+margin: 0;
+font-size: 28px;
+font-weight: 600;
+}
+
+.tagline {
+font-size: 14px;
+color: #555;
+}
+
+.nav-links a {
+color: #213547;
+text-decoration: none;
+font-size: medium;
+font-weight: 550;
+}
+
+.nav-links a:hover {
+color: #4a76d1;
+}

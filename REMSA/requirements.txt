@@ -1,0 +1,13 @@
+langchain-core
+langchain-openai
+langchain-community
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+pyyaml
+duckdb
+fastapi
+uvicorn
+paramiko
+pandas
+rasterio

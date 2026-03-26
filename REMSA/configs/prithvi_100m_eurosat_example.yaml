@@ -1,0 +1,60 @@
+# Example TerraTorch config for Prithvi-100M on EuroSAT
+# This config properly maps EuroSAT bands to Prithvi's expected HLS bands
+
+seed_everything: 42
+
+model:
+  class_path: terratorch.tasks.ClassificationTask
+  init_args:
+    model_factory: EncoderDecoderFactory
+    model_args:
+      backbone: prithvi_eo_v1_100
+      backbone_pretrained: true
+      num_classes: 10
+      decoder: terratorch_IdentityDecoder
+      # Prithvi was trained on 6 HLS bands - specify them so the model
+      # knows which band is in each input channel
+      backbone_bands:
+        - BLUE
+        - GREEN
+        - RED
+        - NIR_NARROW
+        - SWIR_1
+        - SWIR_2
+    loss: ce
+
+data:
+  class_path: torchgeo.datamodules.EuroSATDataModule
+  init_args:
+    batch_size: 8
+    num_workers: 4
+  dict_kwargs:
+    root: ./data
+    download: true
+    # Select only the 6 bands that Prithvi needs from EuroSAT's 13 bands
+    # Order must match backbone_bands above
+    bands:
+      - B02  # Blue
+      - B03  # Green
+      - B04  # Red
+      - B8A  # NIR Narrow
+      - B11  # SWIR 1
+      - B12  # SWIR 2
+
+trainer:
+  accelerator: gpu
+  devices: 1
+  max_epochs: 10
+  precision: 16-mixed
+  log_every_n_steps: 10
+
+optimizer:
+  class_path: torch.optim.AdamW
+  init_args:
+    lr: 0.0001
+    weight_decay: 0.01
+
+lr_scheduler:
+  class_path: torch.optim.lr_scheduler.CosineAnnealingLR
+  init_args:
+    T_max: 10

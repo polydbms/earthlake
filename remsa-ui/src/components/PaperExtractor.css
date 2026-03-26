@@ -1,0 +1,153 @@
+.extract-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height:320px;
+}
+
+.extract-upload-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.extract-error {
+  color: #b00020;
+  font-size: 0.9rem;
+}
+
+.extract-empty-hint {
+  font-size: 0.9rem;
+  color: #666;
+  padding: 12px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.extract-subtitle {
+  margin: 12px 0 4px;
+}
+
+.extract-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+.extract-table thead tr {
+  background: #f3f4f6;
+}
+
+.extract-table th,
+.extract-table td {
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.col-field {
+  width: 180px;
+}
+
+.col-conf {
+  width: 110px;
+  text-align: center;
+}
+
+.field-name {
+  font-weight: 600;
+  background: #fafafa;
+}
+
+.field-editor {
+  overflow-wrap: break-word;
+}
+
+.field-input {
+  width: 100%;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+}
+
+.field-textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.field-readonly {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 13px;
+}
+
+.field-confidence {
+  text-align: center;
+}
+
+.conf-badge {
+  display: inline-block;
+  min-width: 60px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.conf-high {
+  background: #2e7d32;
+}
+
+.conf-med {
+  background: #9e9d24;
+}
+
+.conf-midlow {
+  background: #fb8c00;
+}
+
+.conf-low {
+  background: #e53935;
+}
+
+.conf-none {
+  background: #9e9e9e;
+}
+
+.result-container {
+  max-height: 420px;
+  overflow: auto;
+  border-radius: 8px;
+}
+
+.extract-raw-json {
+  width: 100%;
+  height: 160px;
+  margin-top: 4px;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.create-json-btn {
+  align-self: flex-start;
+}
+
+.clean-json-textarea {
+  width: 100%;
+  font-family: monospace;
+  font-size: 0.8rem;
+  resize: none;
+  overflow: hidden;
+}

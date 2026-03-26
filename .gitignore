@@ -1,0 +1,13 @@
+.DS_Store
+.idea
+.venv
+__pycache__/
+**/__pycache__/
+data/input_models
+file_to_db/model_metadata
+papers
+.env
+model_weights/
+datasets/
+benchmark_results/
+identifier.db

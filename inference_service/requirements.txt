@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+torch
+rasterio
+pyyaml
+terratorch
+numpy
+python-multipart

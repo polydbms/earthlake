@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pyyaml
+# torch + torchvision provided by base image
+terratorch
+torchgeo
+pytorch-lightning
+pandas
+gdown

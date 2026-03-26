@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pyyaml
+# torch + torchvision provided by base image
+torch
+torchvision
+terratorch
+torchgeo
+pytorch-lightning
+rasterio
+python-multipart
+duckdb
+pandas
+gdown
