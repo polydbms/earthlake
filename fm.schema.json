@@ -1,0 +1,355 @@
+{
+  "$id": "fm.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foundation Model Database Schema",
+  "description": "Schema for describing foundation models, including model metadata, nested pretraining phases, and benchmark results.",
+  "type": "object",
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "description": "Unique identifier of the model."
+    },
+    "model_name": {
+      "type": "string",
+      "description": "Only the name of the model without extra descriptions."
+    },
+    "version": {
+      "type": "string",
+      "description": "Version identifier."
+    },
+    "release_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Release date of the model."
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Last updated date."
+    },
+    "short_description": {
+      "type": "string",
+      "description": "Short summary describing the model."
+    },
+    "paper_link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the associated publication."
+    },
+    "citations": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of citations."
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the code repository."
+    },
+    "weights": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to pretrained model weights."
+    },
+    "backbone": {
+      "type": "string",
+      "description": "Specific backbone used."
+    },
+    "num_layers": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of layers."
+    },
+    "num_parameters": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Model size in millions of parameters."
+    },
+    "pretext_training_type": {
+      "type": "string",
+      "description": "Type of pretext training strategy."
+    },
+    "masking_strategy": {
+      "type": "string",
+      "description": "Masking strategy applied during training."
+    },
+    "pretraining": {
+      "type": "string",
+      "description": "Description of pretraining approach."
+    },
+    "domain_knowledge": {
+      "type": "array",
+      "description": "Domain-specific knowledge or methods incorporated.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "backbone_modifications": {
+      "type": "array",
+      "description": "Modifications made to the backbone.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supported_sensors": {
+      "type": "array",
+      "description": "Supported satellite sensors.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "modality_integration_type": {
+      "type": "string",
+      "description": "Integration type."
+    },
+    "modalities": {
+      "type": "array",
+      "description": "Input data modalities.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "spectral_alignment": {
+      "type": "string",
+      "enum": ["full", "partial", "none"],
+      "description": "Whether the model models spectral continuity."
+    },
+    "temporal_alignment": {
+      "type": "string",
+      "enum": ["full", "partial", "none"],
+      "description": "Whether the model models temporal sequences."
+    },
+    "spatial_resolution": {
+      "type": "string",
+      "description": "Spatial resolution of data."
+    },
+    "temporal_resolution": {
+      "type": "string",
+      "description": "Temporal resolution of data."
+    },
+    "bands": {
+      "type": "array",
+      "description": "Spectral bands used.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pretraining_phases": {
+      "type": "array",
+      "description": "List of nested pretraining phases.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "description": "Dataset used for pretraining."
+          },
+          "regions_coverage": {
+            "type": "array",
+            "description": "Geographical regions covered.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "time_range": {
+            "type": "string",
+            "description": "Time range of pretraining data."
+          },
+          "num_images": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of images used."
+          },
+          "token_size": {
+            "type": "string",
+            "description": "Token size."
+          },
+          "image_resolution": {
+            "type": "string",
+            "description": "Input image resolution."
+          },
+          "epochs": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of epochs."
+          },
+          "batch_size": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Batch size."
+          },
+          "learning_rate": {
+            "type": "string",
+            "description": "Learning rate."
+          },
+          "augmentations": {
+            "type": "array",
+            "description": "Augmentations applied.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "processing": {
+            "type": "array",
+            "description": "Additional preprocessing steps.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sampling": {
+            "type": "string",
+            "description": "Sampling strategy."
+          },
+          "processing_level": {
+            "type": "string",
+            "description": "Processing level."
+          },
+          "cloud_cover": {
+            "type": "string",
+            "description": "Cloud cover filtering."
+          },
+          "missing_data": {
+            "type": "string",
+            "description": "Handling of missing data."
+          },
+          "masking_ratio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Masking ratio."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "benchmarks": {
+      "type": "array",
+      "description": "List of benchmark evaluations.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "application_type": {
+            "type": "string",
+            "description": "Type of application evaluated."
+          },
+          "application": {
+            "type": "string",
+            "description": "Specific application domain."
+          },
+          "dataset": {
+            "type": "string",
+            "description": "Benchmark dataset name."
+          },
+          "metrics": {
+            "type": "array",
+            "description": "List of evaluation metrics.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metrics_value": {
+            "type": "array",
+            "description": "Numeric values for each metric.",
+            "items": {
+              "type": "number"
+            }
+          },
+          "sensor": {
+            "type": "array",
+            "description": "Sensors used.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "regions": {
+            "type": "array",
+            "description": "Regions evaluated.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "original_samples": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total number of samples before sampling."
+          },
+          "num_samples": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Actual number of samples used."
+          },
+          "sampling_percentage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Fraction of dataset retained (0–100)."
+          },
+          "num_classes": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of classes."
+          },
+          "classes": {
+            "type": "array",
+            "description": "Names of each class.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "image_resolution": {
+            "type": "string",
+            "description": "Input image resolution."
+          },
+          "spatial_resolution": {
+            "type": "string",
+            "description": "Spatial resolution."
+          },
+          "bands_used": {
+            "type": "array",
+            "description": "Bands used during evaluation.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "augmentations": {
+            "type": "array",
+            "description": "Data augmentations applied.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "optimizer": {
+            "type": "string",
+            "description": "Optimizer used."
+          },
+          "batch_size": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Batch size."
+          },
+          "learning_rate": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Learning rate."
+          },
+          "epochs": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of epochs."
+          },
+          "loss_function": {
+            "type": "string",
+            "description": "Loss function."
+          },
+          "split_ratio": {
+            "type": "string",
+            "description": "Train/val/test split ratio."
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["model_id", "model_name"],
+  "additionalProperties": false
+}
