@@ -14,7 +14,7 @@ It enables **model discovery, evaluation, and operation** in a unified workflow.
 
 ### Architecture
 <p align="center">
-    <img src="figures/Earthlake.png" width="400"/>
+    <img src="figures/Earthlake.png" width="600"/>
 </p>
 
 ### REMSA Chat Tool
