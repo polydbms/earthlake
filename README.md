@@ -3,13 +3,13 @@
 ## Overview
 
 EarthLake is a model lake system for Earth Observation (EO) foundation models.  
-It enables **model discovery, benchmarking, and deployment** in a unified workflow.
+It enables **model discovery, evaluation, and operation** in a unified workflow.
 
 ## Features
 
 - 🔎 **Model Discovery** via natural language (REMSA)
-- 📊 **Benchmarking & Comparison** of EO models
-- 🚀 **Deployment & Inference** on new imagery
+- 📊 **Benchmarking & Evaluating** of EO models
+- 🚀 **Operation & Inference** on new imagery
 - 🗂️ **Model Registry** with structured metadata
 
 ### Architecture
@@ -36,4 +36,4 @@ It enables **model discovery, benchmarking, and deployment** in a unified workfl
 3. go to http://localhost:5173
 
 ## Acknowledgments
-The original implementation of REMSA: https://github.com/be-chen/RSFM_DB.git
+The original implementation of REMSA: [https://github.com/be-chen/REMSA.git](https://github.com/be-chen/REMSA.git)
