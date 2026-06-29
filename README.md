@@ -126,7 +126,7 @@ EarthLake provides a unified interface for registering models, discovering suita
 
 ---
 
-## Model Registration
+## 🗂️ Model Registration
 
 EarthLake allows model developers to register new EO foundation models into the model lake.
 
@@ -142,7 +142,7 @@ The extracted metadata populates the model registry and makes each model searcha
 
 ---
 
-## Model Discovery
+## 🔎 Model Discovery
 
 EarthLake supports model discovery through both structured and natural-language interfaces.
 
@@ -156,7 +156,7 @@ EarthLake integrates REMSA as its discovery module to retrieve and rank candidat
 
 ---
 
-## Benchmarking and Evaluation
+## 📊 Benchmarking and Evaluation
 
 EarthLake enables users to benchmark candidate models on their own EO datasets.
 
@@ -173,7 +173,7 @@ Benchmark results are stored in the experiment database, allowing users to revis
 
 ---
 
-## Model Operation
+## 🚀 Model Operation
 
 After evaluation, users can operationalize the selected model directly within EarthLake.
 
