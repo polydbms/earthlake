@@ -1,6 +1,8 @@
 # EarthLake: Model Lake System for Earth Observation Foundation Model Management
 
-![Alt text](figures/Earthlake.png?raw=true "Architecture of EarthLake")
+<p align="center">
+    <img src="figures/Earthlake.png" width="600"/>
+</p>
 
 This repository contains the code of the paper **Demonstrating EarthLake: A Model Lake System for Earth Observation Foundation Model Management**. The work introduces EarthLake, a model lake system for Earth Observation Foundation Models (EO FMs), enabling users to discover, evaluate, compare, and operationalize EO FMs in a unified workflow.
 
@@ -48,24 +50,6 @@ cp .env.example .env
 
 Set your OpenAI API key in the `.env` file.
 
-Run EarthLake with the correct profile. Use `gpu` for CUDA-enabled environments, and `cpu` otherwise, including CPU and MPS-based setups:
-
-```bash
-docker compose --profile cpu up
-```
-
-For GPU environments:
-
-```bash
-docker compose --profile gpu up
-```
-
-After startup, open the web interface at:
-
-```bash
-http://localhost:5173
-```
-
 ---
 
 ## Configuration
@@ -84,45 +68,23 @@ Adjust these parameters according to your local runtime environment and availabl
 
 ## Running EarthLake
 
-To launch EarthLake:
+Run EarthLake with the correct profile. Use `gpu` for CUDA-enabled environments, and `cpu` otherwise, including CPU and MPS-based setups:
 
 ```bash
 docker compose --profile cpu up
 ```
 
-Then navigate to:
+For GPU environments:
+
+```bash
+docker compose --profile gpu up
+```
+
+After startup, open the web interface at:
 
 ```bash
 http://localhost:5173
 ```
-
-EarthLake provides a unified interface for registering models, discovering suitable EO FMs, benchmarking candidate models, comparing evaluation results, and running inference on new imagery.
-
----
-
-## Data Structure
-
-### Model Registry
-
-- Defined by the structured EO foundation model schema
-- Stores metadata for EO FMs
-- Captures model capabilities, supported tasks, sensor modalities, architectures, training details, and operational constraints
-- Supports browsing, filtering, SQL querying, and natural-language model discovery
-
-### Model Artifacts
-
-- Stores model weights, code, runtime dependencies, and related model resources
-- Allows models to be managed as first-class assets in the model lake
-
-### Experiment Database
-
-- Records benchmark configurations, datasets, hardware contexts, and evaluation metrics
-- Enables reproducible comparison of candidate models across experiments
-
-### Datasets and Evaluation Outputs
-
-- Stores user-provided datasets and generated benchmark results
-- Supports downstream comparison, selection, and operational deployment of EO FMs
 
 ---
 
@@ -158,7 +120,11 @@ EarthLake integrates REMSA as its discovery module to retrieve and rank candidat
 
 ## 📊 Benchmarking and Evaluation
 
-EarthLake enables users to benchmark candidate models on their own EO datasets.
+EarthLake enables users to benchmark candidate models on their own EO datasets:
+
+<p align="center">
+  <img src="figures/benchmark.png" width="800"/>
+</p>
 
 The benchmarking workflow supports:
 
@@ -168,8 +134,6 @@ The benchmarking workflow supports:
 - Linear probing
 - Fine-tuning
 - Performance comparison across candidate models
-
-Benchmark results are stored in the experiment database, allowing users to revisit, compare, and reuse evaluation evidence across runs.
 
 ---
 
@@ -185,7 +149,11 @@ This connects model discovery, benchmarking, and deployment in a single workflow
 
 ## REMSA Integration
 
-EarthLake uses REMSA for task-driven EO foundation model discovery.
+EarthLake uses REMSA chat interface for task-driven EO foundation model discovery:
+
+<p align="center">
+  <img src="figures/chat.png" width="800"/>
+</p>
 
 The original implementation of REMSA is available at:
 
@@ -219,7 +187,7 @@ demir@tu-berlin.de
 **Volker Markl**  
 volker.markl@tu-berlin.de
 
-For questions, requests and concerns, please contact [Binger Chen](mailto:chen@tu-berlin.de).
+For questions, requests and concerns, please contact [Binger Chen](mailto:binger.chen@hu-berlin.de).
 
 ## License
 
