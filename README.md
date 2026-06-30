@@ -4,7 +4,7 @@
     <img src="figures/Earthlake.png" width="600"/>
 </p>
 
-This repository contains the code of the paper **Demonstrating EarthLake: A Model Lake System for Earth Observation Foundation Model Management**. The work introduces EarthLake, a model lake system for Earth Observation Foundation Models (EO FMs), enabling users to discover, evaluate, compare, and operationalize EO FMs in a unified workflow.
+This repository contains the code of the paper [**Demonstrating EarthLake: A Model Lake System for Earth Observation Foundation Model Management**](Paper.pdf). The work introduces EarthLake, a model lake system for Earth Observation Foundation Models (EO FMs), enabling users to discover, evaluate, compare, and operationalize EO FMs in a unified workflow.
 
 This work has been done at [BIFOLD](https://www.bifold.berlin/) and [TU Berlin](https://www.tu.berlin/) by Binger Chen, Haralampos Gavriilidis, Luca Gaedicke, Tacettin Emre Bök, Matthias Boehm, Ziawasch Abedjan, Begüm Demir, and Volker Markl.
 
