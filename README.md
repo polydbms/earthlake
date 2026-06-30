@@ -102,6 +102,10 @@ Model documentation, such as research papers or model cards, can be used to extr
 
 The extracted metadata populates the model registry and makes each model searchable and comparable within EarthLake.
 
+<p align="center">
+  <img src="figures/registry.png" width="800"/>
+</p>
+
 ---
 
 ## 🔎 Model Discovery
@@ -115,6 +119,14 @@ Users can search the model lake using:
 - Operational constraints such as modality, hardware availability, and target task
 
 EarthLake integrates REMSA as its discovery module to retrieve and rank candidate EO FMs. The system returns a top-k list of recommended models together with metadata and explanations for their task compatibility.
+
+<p align="center">
+  <img src="figures/chat.png" width="800"/>
+</p>
+
+The original implementation of REMSA is available at:
+
+[https://github.com/be-chen/REMSA.git](https://github.com/be-chen/REMSA.git)
 
 ---
 
@@ -145,47 +157,16 @@ EarthLake loads the validated model configuration and executes inference through
 
 This connects model discovery, benchmarking, and deployment in a single workflow.
 
----
-
-## REMSA Integration
-
-EarthLake uses REMSA chat interface for task-driven EO foundation model discovery:
-
 <p align="center">
-  <img src="figures/chat.png" width="800"/>
+  <img src="figures/inference.png" width="800"/>
 </p>
 
-The original implementation of REMSA is available at:
-
-[https://github.com/be-chen/REMSA.git](https://github.com/be-chen/REMSA.git)
-
 ---
 
-## Authors
+##  Corresponding Author
 
-**Binger Chen**  
-chen@tu-berlin.de
-
-**Haralampos Gavriilidis**  
-gavriilidis@tu-berlin.de
-
-**Luca Gaedicke**  
-luca.gaedicke@tu-berlin.de
-
-**Tacettin Emre Bök**  
-boek@tu-berlin.de
-
-**Matthias Boehm**  
-matthias.boehm@tu-berlin.de
-
-**Ziawasch Abedjan**  
-abedjan@tu-berlin.de
-
-**Begüm Demir**  
-demir@tu-berlin.de
-
-**Volker Markl**  
-volker.markl@tu-berlin.de
+**Binger Chen**
+https://hu.berlin/binger_chen
 
 For questions, requests and concerns, please contact [Binger Chen](mailto:binger.chen@hu-berlin.de).
 
