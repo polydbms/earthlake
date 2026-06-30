@@ -112,13 +112,7 @@ The extracted metadata populates the model registry and makes each model searcha
 
 EarthLake supports model discovery through both structured and natural-language interfaces.
 
-Users can search the model lake using:
-
-- SQL queries over the structured model registry
-- Natural-language task descriptions
-- Operational constraints such as modality, hardware availability, and target task
-
-EarthLake integrates REMSA as its discovery module to retrieve and rank candidate EO FMs. The system returns a top-k list of recommended models together with metadata and explanations for their task compatibility.
+EarthLake integrates REMSA as its discovery module to retrieve and rank candidate EO FMs. The system returns a top-k list of recommended models together with metadata and explanations for their task compatibility:
 
 <p align="center">
   <img src="figures/chat.png" width="800"/>
@@ -154,8 +148,6 @@ The benchmarking workflow supports:
 After evaluation, users can operationalize the selected model directly within EarthLake.
 
 EarthLake loads the validated model configuration and executes inference through a unified runtime interface. Users can upload new satellite imagery and run EO tasks such as classification or segmentation, with prediction results shown in the interface.
-
-This connects model discovery, benchmarking, and deployment in a single workflow.
 
 <p align="center">
   <img src="figures/inference.png" width="800"/>
